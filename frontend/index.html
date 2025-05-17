@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPad - Online Python Editor</title>
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/editor/editor.main.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+</head>
+<body>
+    <header class="app-header">
+        <h1>PyPad <span class="beta-tag">Beta</span></h1>
+        <p>A simple online Python editor & execution environment</p>
+    </header>
+
+    <div class="main-container">
+        <div class="pane editor-pane">
+            <div class="pane-header">
+                <h2>Code Editor</h2>
+                <!-- Snippet selector will go here, or in its own controls bar -->
+            </div>
+            <!-- Snippet Selector Control Bar -->
+            <div class="editor-pane-controls" style="padding: 8px 15px; border-bottom: 1px solid var(--border-color); background-color: #f7f7f7; display: flex; align-items: center; gap: 10px;">
+                <label for="snippetSelector" style="font-size:0.9em; font-weight: 500; color: #555;">Load Snippet:</label>
+                <select id="snippetSelector" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); font-size: 0.9em;">
+                    <option value="">-- Select a snippet --</option>
+                    <option value="hello">Hello World</option>
+                    <option value="loop">For Loop</option>
+                    <option value="input_name">Read Name</option>
+                    <option value="function_def">Define Function</option>
+                </select>
+                <!-- You could add a "Clear Code" button here too -->
+                <!-- <button id="clearCodeButton" class="button-secondary" style="margin-left: auto;">Clear Code</button> -->
+            </div>
+            <div id="editor" class="editor-container"></div>
+            <div class="editor-controls">
+                <button id="runButton" class="button-primary">Run Code</button>
+            </div>
+        </div>
+
+        <div class="pane terminal-pane">
+            <div class="pane-header">
+                <h2>Terminal / Output</h2>
+                <button id="clearTerminalButton" class="button-secondary">Clear</button>
+            </div>
+            <div id="terminal" class="terminal-container">
+                <!-- Terminal content will be added by script.js -->
+            </div>
+            <div class="input-area">
+                <label for="inputField" class="input-label">Program Input:</label>
+                <textarea id="inputField" placeholder="Enter input for your program here (if any)... Press Ctrl+Enter to run." class="input-field-textarea"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <footer class="app-footer">
+        <p>© 2024 Parava Varshita/Project. Powered by Monaco & Docker.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/loader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

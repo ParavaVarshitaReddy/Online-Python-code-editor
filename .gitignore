@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+backend/venv/ # Be specific if venv is nested
+
+# IDE / OS specific
+.vscode/
+.DS_Store
+*.swp

@@ -1,0 +1,240 @@
+/* --- Reset & Base Styles --- */
+:root {
+    --primary-color: #007bff; /* Blue */
+    --primary-hover-color: #0056b3;
+    --secondary-color: #6c757d; /* Gray */
+    --secondary-hover-color: #545b62;
+    --success-color: #28a745; /* Green */
+    --danger-color: #dc3545; /* Red */
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --text-color-light: #f8f9fa;
+    --text-color-dark: #212529;
+    --border-color: #dee2e6;
+    --editor-bg: #1e1e1e; /* Default Monaco dark theme background */
+    --terminal-bg: #1e1e1e;
+    --terminal-text-color: #d4d4d4;
+
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.6;
+    background-color: var(--light-bg);
+    color: var(--text-color-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header & Footer --- */
+.app-header {
+    background-color: var(--dark-bg);
+    color: var(--text-color-light);
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.app-header h1 {
+    margin-bottom: 0.25rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.app-header .beta-tag {
+    font-size: 0.7rem;
+    font-weight: normal;
+    padding: 0.2em 0.5em;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.app-header p {
+    font-size: 0.9rem;
+    color: #adb5bd; /* Lighter gray for tagline */
+}
+
+.app-footer {
+    background-color: var(--dark-bg);
+    color: #adb5bd;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* --- Main Layout --- */
+.main-container {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    flex-grow: 1; /* Takes remaining vertical space */
+    padding: 20px;
+    gap: 20px;
+}
+
+/* --- Panes --- */
+.pane {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Important for containing Monaco */
+}
+
+.editor-pane, .terminal-pane {
+    flex: 1; /* Equal distribution of space in row layout */
+    min-width: 0; /* Important for flex items to shrink properly */
+}
+
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #f7f7f7; /* Slightly off-white header for panes */
+}
+
+.pane-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* --- Editor & Terminal Specifics --- */
+.editor-container {
+    height: 450px; /* Default height, can be adjusted */
+    border: none; /* Remove previous border, pane has it */
+    flex-grow: 1; /* Allow editor to take available space */
+}
+
+.terminal-container {
+    height: 300px; /* Default height */
+    background-color: var(--terminal-bg);
+    color: var(--terminal-text-color);
+    font-family: var(--font-family-monospace);
+    padding: 15px;
+    overflow-y: auto;
+    flex-grow: 1;
+    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+    font-size: 0.9em;
+}
+.terminal-container p {
+    margin-bottom: 0.3em; /* Spacing between terminal lines */
+    word-break: break-all; /* Prevent long unbroken strings from overflowing */
+}
+.terminal-container p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- Controls & Input Area --- */
+.editor-controls {
+    padding: 10px 15px;
+    border-top: 1px solid var(--border-color);
+    background-color: #f7f7f7;
+}
+
+.input-area {
+    padding: 10px 15px;
+    border-top: 1px solid var(--border-color);
+    background-color: #f7f7f7;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-field-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-family-monospace);
+    font-size: 0.9em;
+    background-color: #fff; /* Or var(--terminal-bg) for dark input */
+    color: var(--text-color-dark); /* Or var(--terminal-text-color) */
+    resize: vertical; /* Allow vertical resizing */
+}
+.input-field-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
+/* --- Buttons --- */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+button:active {
+    transform: translateY(1px);
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.button-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+.button-primary:disabled {
+    background-color: #a0c7f0; /* Lighter blue when disabled */
+    cursor: not-allowed;
+}
+
+
+.button-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+.button-secondary:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+/* ... (previous CSS) ... */
+
+/* --- Responsive Layout: Side-by-side on larger screens --- */
+@media (min-width: 992px) { /* Adjust breakpoint as needed */
+    .main-container {
+        flex-direction: row; /* Editor and terminal side-by-side */
+        height: calc(100vh - 100px - 70px); /* Full height minus header and footer approx heights */
+    }
+
+    .editor-pane, .terminal-pane {
+        /* Ensure panes can take up the full height of the main-container */
+        height: 100%;
+    }
+    
+    /*
+       The editor and terminal containers will use flex-grow within their panes,
+       so their explicit height settings might not be strictly needed if parent pane height is controlled well.
+       The empty rulesets for .editor-container and .terminal-container that were here have been removed.
+    */
+    /* .editor-container { }  <-- DELETED */
+    /* .terminal-container { } <-- DELETED */
+}
