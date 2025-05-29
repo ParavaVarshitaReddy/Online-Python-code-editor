@@ -22,7 +22,5 @@ This is a web-based Python code editor that allows users to write, run, and view
 ![Editor UI](screenshots/pic.png.png)
 ![Editor UI](screenshots/editor-preview.png.png)
 
-*(You can add more screenshots similarly if needed)*
 
-## 📂 Project Structure
 
